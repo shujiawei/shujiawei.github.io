@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="测试">
+<meta name="description" content="DOM扩展选择符api document.querySelector(); document.querySelectorAll(); document.getElementsByClassName();  元素遍历 childElementCount 返回子元素的个数，不包括文本节点和注释 firstElementChild 返回第一个子元素 firstChild的元素版 lastElementC">
 <meta name="keywords" content="jiaweisu, jia, wei, su, 苏, 家, 前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="苏家为">
-<meta property="og:url" content="http://yoursite.com/2019/11/16/test/index.html">
+<meta property="og:url" content="http://yoursite.com/2021/02/24/DOM扩展/index.html">
 <meta property="og:site_name" content="苏家为">
-<meta property="og:description" content="测试">
+<meta property="og:description" content="DOM扩展选择符api document.querySelector(); document.querySelectorAll(); document.getElementsByClassName();  元素遍历 childElementCount 返回子元素的个数，不包括文本节点和注释 firstElementChild 返回第一个子元素 firstChild的元素版 lastElementC">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-16T03:08:07.031Z">
+<meta property="og:updated_time" content="2021-02-24T15:21:17.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="苏家为">
-<meta name="twitter:description" content="测试">
+<meta name="twitter:description" content="DOM扩展选择符api document.querySelector(); document.querySelectorAll(); document.getElementsByClassName();  元素遍历 childElementCount 返回子元素的个数，不包括文本节点和注释 firstElementChild 返回第一个子元素 firstChild的元素版 lastElementC">
 
 
 
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/16/test/">
+  <link rel="canonical" href="http://yoursite.com/2021/02/24/DOM扩展/">
 
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/24/DOM扩展/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jiaweisu">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-16T11:08:00+08:00">
-                2019-11-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-24T23:28:31+08:00">
+                2021-02-24
               </time>
             
 
@@ -300,7 +300,34 @@
       
 
       
-        <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1>
+        <h1 id="DOM扩展"><a href="#DOM扩展" class="headerlink" title="DOM扩展"></a>DOM扩展</h1><h3 id="选择符api"><a href="#选择符api" class="headerlink" title="选择符api"></a>选择符api</h3><ol>
+<li>document.querySelector();</li>
+<li>document.querySelectorAll();</li>
+<li>document.getElementsByClassName();</li>
+</ol>
+<h3 id="元素遍历"><a href="#元素遍历" class="headerlink" title="元素遍历"></a>元素遍历</h3><ol>
+<li>childElementCount 返回子元素的个数，不包括文本节点和注释</li>
+<li>firstElementChild 返回第一个子元素 firstChild的元素版</li>
+<li>lastElementChild 返回最后一个子元素 lastChild的元素版</li>
+<li>previousElementSibling 返回前一个同辈元素 previousSibling的元素版</li>
+<li>nextElementSibling 返回后一个同辈元素 nextSibling的元素版</li>
+</ol>
+<h3 id="与类相关的扩充"><a href="#与类相关的扩充" class="headerlink" title="与类相关的扩充"></a>与类相关的扩充</h3><ol>
+<li>document.getElementsByClassName()</li>
+<li>classList<br> 2.1 add(value) 将给定的字符串添加到列表中，如果值已经存在就不添加了<br> 2.2 contains(value) 表示列表是否存在给定的值 存在返回true 不存在返回fasle<br> 2.3 remove(value) 从列表中删除给定的字符串<br> 2.4 toggle(value) 如果列表中存在给定的值就删除，不存在就添加</li>
+<li>焦点管理<br> 3.1 document.activeElement 当前获得焦点的元素<br> 3.2 document.hasFocus() 确定文档是否获得了焦点</li>
+<li>自定义数据属性<br> 4.1 dataset属性来访问自定义属性</li>
+<li>插入标记<br> 5.1 innerHTML<pre><code>5.1.1 在读模式 innerHTML属性返回与调用元素的所有子节点(元素,注释和文本节点)
+5.1.2 在写模式 innerHTML的值会被解析为DOM子树，替换调用元素原来的子节点</code></pre> 5.2 outerHTML<pre><code>5.2.1 在读模式 outerHTML属性返回与调用元素的所有子节点(元素,注释和文本节点)
+5.2.2 在写模式 outerHTML的值会被解析为DOM子树，完全替换调用元素</code></pre></li>
+<li>scrollIntoView()<br> 6.1 scrollIntoView()可以在所有HTML元素上调用，通过滚动浏览器窗口或某个容器元素，调用元素就会出现在是口中</li>
+<li>children属性 只包含元素子节点</li>
+<li>contains()方法判断某个节点是不是另外一个节点的后代document.documentElement.contains(document. body)</li>
+<li>插入文本<br> 9.1 innerText<pre><code>9.1.1 在读模式 innerText属性返回与调用元素的所有文本内容
+9.1.2 在写模式 innerText的值会替换容器元素的所有内容</code></pre> 9.2 outerText<pre><code>9.2.1 在读模式 outerText属性返回与调用元素的所有文本内容
+9.2.2 在写模式 outerText的的值会替换容器元素</code></pre></li>
+</ol>
+
       
     </div>
     
@@ -324,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/13/json/" rel="next" title="JSON">
-                <i class="fa fa-chevron-left"></i> JSON
+              <a href="/2021/02/24/DOM/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -334,7 +361,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/02/24/DOM/" rel="prev" title>
+              <a href="/2021/02/24/nvm/" rel="prev" title>
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -450,7 +477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number">1.</span> <span class="nav-text">测试</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM扩展"><span class="nav-number">1.</span> <span class="nav-text">DOM扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择符api"><span class="nav-number">1.0.1.</span> <span class="nav-text">选择符api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元素遍历"><span class="nav-number">1.0.2.</span> <span class="nav-text">元素遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与类相关的扩充"><span class="nav-number">1.0.3.</span> <span class="nav-text">与类相关的扩充</span></a></li></ol></li></ol></div>
             
 
           </div>

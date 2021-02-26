@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM文档对象模型   DOM描绘了一个层次化的节点数    文档节点是每个文档的根节点，文档节点只有一个子节点就是html元素。 Node类型每个节点都有一个nodeType类型 1: 元素节点3: 文本节点6: 注释节点 每个节点都有一个childNodes属性,其中保存着一个NodeList对象.NodeList是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。 如何访问">
+<meta name="keywords" content="jiaweisu, jia, wei, su, 苏, 家, 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苏家为">
+<meta property="og:url" content="http://yoursite.com/2021/02/24/DOM/index.html">
+<meta property="og:site_name" content="苏家为">
+<meta property="og:description" content="DOM文档对象模型   DOM描绘了一个层次化的节点数    文档节点是每个文档的根节点，文档节点只有一个子节点就是html元素。 Node类型每个节点都有一个nodeType类型 1: 元素节点3: 文本节点6: 注释节点 每个节点都有一个childNodes属性,其中保存着一个NodeList对象.NodeList是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。 如何访问">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-02-24T14:49:51.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="苏家为">
+<meta name="twitter:description" content="DOM文档对象模型   DOM描绘了一个层次化的节点数    文档节点是每个文档的根节点，文档节点只有一个子节点就是html元素。 Node类型每个节点都有一个nodeType类型 1: 元素节点3: 文本节点6: 注释节点 每个节点都有一个childNodes属性,其中保存着一个NodeList对象.NodeList是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。 如何访问">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/24/DOM/">
+
+
+
+
+
+  <title> | 苏家为</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">苏家为</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">每天加油一下，坚持下去就会比别人多了一大步</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/24/DOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jiaweisu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏家为">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-24T23:28:31+08:00">
+                2021-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DOM文档对象模型"><a href="#DOM文档对象模型" class="headerlink" title="DOM文档对象模型"></a>DOM文档对象模型</h1><blockquote>
+<blockquote>
+<blockquote>
+<p>DOM描绘了一个层次化的节点数</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>文档节点是每个文档的根节点，文档节点只有一个子节点就是html元素。</p>
+<h3 id="Node类型"><a href="#Node类型" class="headerlink" title="Node类型"></a>Node类型</h3><p>每个节点都有一个nodeType类型</p>
+<p>1: 元素节点<br>3: 文本节点<br>6: 注释节点</p>
+<p>每个节点都有一个childNodes属性,其中保存着一个NodeList对象.NodeList是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。</p>
+<h4 id="如何访问childNodes"><a href="#如何访问childNodes" class="headerlink" title="如何访问childNodes?"></a>如何访问childNodes?</h4><ol>
+<li>直接通过索引来访问<br>var firstChild = someNode.childNodes[0]</li>
+<li>通过item()来访问<br>var fisrtChild = someNode.childNodes.item(0)</li>
+</ol>
+<p>延伸知识?(如何把类数组转化为数组)</p>
+<ol>
+<li><p>Array.propotype.slice.call(nodeList, 0);</p>
+</li>
+<li><p>手动枚举所有成员<br> var arr = [];<br> for(var i = 0; i &lt; nodeList.length; i++) {</p>
+<pre><code>arr.push(nodeList[i])</code></pre><p> }</p>
+</li>
+<li><p>var arr = Array.from(nodeList);</p>
+</li>
+<li><p>var arr = […nodeList];</p>
+</li>
+</ol>
+<h4 id="介绍下firstChild-lastChild-previousSibling-nextSibling"><a href="#介绍下firstChild-lastChild-previousSibling-nextSibling" class="headerlink" title="介绍下firstChild,lastChild,previousSibling, nextSibling"></a>介绍下firstChild,lastChild,previousSibling, nextSibling</h4><p>firstChild = parentNode.childNodes[0];</p>
+<p>lastChild = parentNode.childNodes[parentNode.childNodes.length - 1];</p>
+<p>previousSibing 获取当前节点的上一个兄弟节点</p>
+<p>nextSibling 获取当前节点的下一个兄弟节点</p>
+<p>值得一提的是ownerDocument，该属性指向表示整个文档的文档节点，任何节点都不能同时存在两个或者更多的文档中。</p>
+<h4 id="如何操作节点？"><a href="#如何操作节点？" class="headerlink" title="如何操作节点？"></a>如何操作节点？</h4><p>appendChild(), insertBefore(), replaceChild(), removeChild(), cloneNode()</p>
+<p>appendChild(要插入的节点) 用于向childNodes列表末尾添加一个节点</p>
+<p>insertBefore(要插入的节点，作为参照的节点) 把插入节点放到参照节点前面</p>
+<p>replaceChild(要插入的节点, 要替换的节点) 把要替换的节点更换为插入节点</p>
+<p>removeChild(移除的节点) 把该节点从childNodes中移除</p>
+<p>cloneNode(克隆的节点, 布尔值(true为深拷贝, false为浅拷贝)) 返回一个完全相同的副本</p>
+<h3 id="Document类型"><a href="#Document类型" class="headerlink" title="Document类型"></a>Document类型</h3><ol>
+<li>nodeType的值为9</li>
+<li>nodeName的值为#document</li>
+<li>nodeValue为null</li>
+<li>parentNode为null</li>
+<li>ownerDocument为null</li>
+</ol>
+<h4 id="文档的子节点"><a href="#文档的子节点" class="headerlink" title="文档的子节点"></a>文档的子节点</h4><ol>
+<li>document.documentElement 取得对html的引用</li>
+<li>document.body  取得对body的引用</li>
+</ol>
+<h4 id="文档的信息"><a href="#文档的信息" class="headerlink" title="文档的信息"></a>文档的信息</h4><ol>
+<li>document.URL 地址栏URL</li>
+<li>document.domain 页面域名</li>
+<li>document.referrer 保存者链接到当前页面的那个页面的URL</li>
+</ol>
+<h4 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h4><ol>
+<li>document.getElementId(元素的id)</li>
+<li>document.getElementsByTagName(标签名称) 返回的集合是HTMLCollection对象</li>
+</ol>
+<h4 id="文档写入"><a href="#文档写入" class="headerlink" title="文档写入"></a>文档写入</h4><ol>
+<li>document.write()</li>
+</ol>
+<h3 id="Element类型"><a href="#Element类型" class="headerlink" title="Element类型"></a>Element类型</h3><ol>
+<li>nodeType的值为1</li>
+<li>nodeName的值为元素的标签名</li>
+<li>nodeValue为null</li>
+<li>parentNode可能为Document或Element</li>
+</ol>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>访问元素的标签名称可以用nodeName属性或者tagName属性</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="HTML元素"><a href="#HTML元素" class="headerlink" title="HTML元素"></a>HTML元素</h4><ol>
+<li>id元素在文档中唯一标识符</li>
+<li>title有关元素的附加说明信息，一般通过工具提示条显示出来</li>
+<li>lang元素内容的语言代码，很少使用</li>
+<li>dir语言的方向，值为”ltr”(left to right, 从左到右)或”rtl”(right to left,从右到左)</li>
+<li>calssName与元素的class特性对应，即为元素指定的CSS类</li>
+</ol>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>上述的属性都可以用来取得或修改相应的特性值</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>var div = document.getElementId(‘#div’);<br>div.id = ‘div’;</p>
+<h4 id="HTML特性"><a href="#HTML特性" class="headerlink" title="HTML特性"></a>HTML特性</h4><ol>
+<li>someNode.getAttribute(属性名)</li>
+<li>someNode.setAttribute(‘属性名’, ‘属性值’)</li>
+<li>someNode.removeAttribute(属性名)</li>
+</ol>
+<h4 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h4><p>document.createElement(标签名)</p>
+<p>var div = document.createElement(‘div’)<br>div.id = ‘div’;<br>document.body.appendChild(div)</p>
+<h3 id="DocumentFragment类型"><a href="#DocumentFragment类型" class="headerlink" title="DocumentFragment类型"></a>DocumentFragment类型</h3><ol>
+<li>nodeType为11</li>
+<li>nodeName为#document-fragment</li>
+<li>nodeValue为null</li>
+</ol>
+<p>如何创建DocumentFragment?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">fragment.appendChild(<span class="string">'li'</span>);</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(fragment);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/16/test/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/24/DOM扩展/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">jiaweisu</p>
+              <p class="site-description motion-element" itemprop="description">每天加油一下，坚持下去就会比别人多了一大步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM文档对象模型"><span class="nav-number">1.</span> <span class="nav-text">DOM文档对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">Node类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何访问childNodes"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">如何访问childNodes?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍下firstChild-lastChild-previousSibling-nextSibling"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">介绍下firstChild,lastChild,previousSibling, nextSibling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何操作节点？"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">如何操作节点？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Document类型"><span class="nav-number">1.0.2.</span> <span class="nav-text">Document类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档的子节点"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">文档的子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文档的信息"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">文档的信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找元素"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">查找元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文档写入"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">文档写入</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Element类型"><span class="nav-number">1.0.3.</span> <span class="nav-text">Element类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML元素"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">HTML元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML特性"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">HTML特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建元素"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">创建元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DocumentFragment类型"><span class="nav-number">1.0.4.</span> <span class="nav-text">DocumentFragment类型</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jiaweisu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
